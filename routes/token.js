@@ -59,7 +59,7 @@ router.post('/schoolware', async function (req, res, next) {
     body: `{"action":"WisaUserAPI","method":"Authenticate","data":["${user}","${password}"],"type":"rpc","tid":1}`
   };
   
-  const response = await axios(url, options)
+  const response = await fetch(url, options)
   
   let cookie = response.headers.getSetCookie()[0].split(";")[0].split("=")[1];
   console.log(cookie);
