@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "@schoolware/schoolware-lib": "^1.0.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "debug": "^2.6.9",
@@ -13,8 +14,7 @@
     "express-slow-down": "^2.0.3",
     "http-errors": "^1.6.3",
     "morgan": "^1.9.1",
-    "pug": "^2.0.0-beta11",
-    "schoolware-lib": "https://git.mb-server.com/api/packages/schoolware-nextgen/npm"
+    "pug": "^2.0.0-beta11"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"
