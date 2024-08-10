@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var schoolware = require('../../schoolware-lib/lib');
+var schoolware = require('@schoolware/schoolware-lib');
 
 
 router.post('/microsoft', async function (req, res, next) {
