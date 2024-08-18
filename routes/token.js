@@ -7,11 +7,12 @@ router.post('/microsoft', async function (req, res, next) {
   try {
     const username = req.body.username;
     const password = req.body.password;
-    if (typeof (username) != 'string' || typeof (password) != 'string') {
-      res.status(400).send(`send user and password`);
+    const domain = req.body.domain;
+    if (typeof (username) != 'string' || typeof (password) != 'string' || typeof (username) != 'string') {
+      res.status(400).send(`send user and password and domain`);
       return;
     }
-    Schoolware = new schoolware.Schoolware(username, password);
+    Schoolware = new schoolware.Schoolware(username, password, domain);
     token = await Schoolware.getTokenMicrosoft();
     var success = await Schoolware.checkToken()
     res.json({ "token": token, "success": success });
@@ -27,11 +28,12 @@ router.post('/schoolware', async function (req, res, next) {
   try {
     const username = req.body.username;
     const password = req.body.password;
-    if (typeof (username) != 'string' || typeof (password) != 'string') {
-      res.status(400).send(`send user and password`);
+    const domain = req.body.domain;
+    if (typeof (username) != 'string' || typeof (password) != 'string' || typeof (username) != 'string') {
+      res.status(400).send(`send user and password and domain`);
       return;
     }
-    Schoolware = new schoolware.Schoolware(username, password)
+    Schoolware = new schoolware.Schoolware(username, password, domain);
     token = await Schoolware.getTokenSchoolware();
     var success = await Schoolware.checkToken()
     res.json({ "token": token, "success": success });
