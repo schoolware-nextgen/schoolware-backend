@@ -26,16 +26,16 @@ const schoolwareLimiter = slowDown({
 })
 const generalLimiter = slowDown({
 	windowMs: 5 * 60 * 1000, // 15 minutes
-	delayAfter: 30, // Allow 1 request per 20 seconsds.
-	delayMs: (hits) => hits * 200, // Add 100 ms of delay to every request after the 5th one.
-	maxDelayMs: 30000
+	delayAfter: 200, // Allow 1 request per 20 seconsds.
+	delayMs: (hits) => hits * 100, // Add 100 ms of delay to every request after the 5th one.
+	maxDelayMs: 5000
 })
 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
+app.set('trust proxy', 1 /* number of proxies between user and server */)
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
