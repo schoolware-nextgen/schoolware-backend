@@ -36,6 +36,7 @@ const generalLimiter = slowDown({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.set('trust proxy', 1 /* number of proxies between user and server */)
+
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
