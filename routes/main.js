@@ -69,7 +69,6 @@ router.post('/tasks', async function (req, res, next) {
     Schoolware = new schoolware.Schoolware();
     Schoolware.token = token;
     let tasks = await Schoolware.tasks();
-    tasks = [{"vak":"mb","title":"test","type":"hertoets","comment":"veel commentaar","deadline":"2024-08-05T17:30:16.392Z"}]
     res.json(tasks);
   }
   catch (e) {
