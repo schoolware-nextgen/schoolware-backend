@@ -7,14 +7,15 @@ var schoolware = require('@schoolware/schoolware-lib');
 router.post('/check', async function (req, res, next) {
   try {
     const token = req.body.token;
+    const domain = req.body.domain;
     if (typeof (token) != 'string') {
       res.status(400).send(`send token`);
       return;
     }
-    Schoolware = new schoolware.Schoolware();
+    let Schoolware = new schoolware.Schoolware(undefined,undefined,domain);
     Schoolware.token = token;
-    let succes, status = await Schoolware.checkToken();
-    res.json({ "succes": succes , "status": status});
+    let [success, status] = await Schoolware.checkToken();
+    res.json({ "success": success , "status": status});
   }
   catch (e) {
     //console.log(e)
@@ -25,13 +26,14 @@ router.post('/check', async function (req, res, next) {
 router.post('/points', async function (req, res, next) {
   try {
     const token = req.body.token;
+    const domain = req.body.domain;
     if (typeof (token) != 'string') {
       res.status(400).send(`send token`);
       return;
     }
-    Schoolware = new schoolware.Schoolware();
+    let Schoolware = new schoolware.Schoolware(undefined,undefined,domain);
     Schoolware.token = token;
-    let points,success,status = await Schoolware.points();
+    let [points,success,status] = await Schoolware.points();
     res.json({"data" : points, "success": success, "status": status});
   }
   catch (e) {
@@ -43,14 +45,15 @@ router.post('/points', async function (req, res, next) {
 router.post('/agenda', async function (req, res, next) {
   try {
     const token = req.body.token;
+    const domain = req.body.domain;
     const date = req.body.date;
     if (typeof (token) != 'string') {
       res.status(400).send(`send token`);
       return;
     }
-    Schoolware = new schoolware.Schoolware();
+    let Schoolware = new schoolware.Schoolware(undefined,undefined,domain);
     Schoolware.token = token;
-    let agenda,success,status = await Schoolware.agenda(date);
+    let [agenda,success,status] = await Schoolware.agenda(date);
     res.json({"data" : agenda, "success": success, "status": status});
   }
   catch (e) {
@@ -62,13 +65,15 @@ router.post('/agenda', async function (req, res, next) {
 router.post('/tasks', async function (req, res, next) {
   try {
     const token = req.body.token;
+    const domain = req.body.domain;
     if (typeof (token) != 'string') {
       res.status(400).send(`send token`);
       return;
     }
-    Schoolware = new schoolware.Schoolware();
+    let Schoolware = new schoolware.Schoolware(undefined,undefined,domain);
     Schoolware.token = token;
-    let tasks,success,status  = await Schoolware.tasks();
+    let [tasks,success,status]  = await Schoolware.tasks();
+    console.log(status)
     res.json({"data" : tasks, "success": success, "status": status});
   }
   catch (e) {

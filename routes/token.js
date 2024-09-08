@@ -13,14 +13,14 @@ router.post('/microsoft', async function (req, res, next) {
       return;
     }
     let Schoolware = new schoolware.Schoolware(username, password, domain);
-    let token, succes, status = await Schoolware.getTokenMicrosoft();
-    if(succes){
-      var success = await Schoolware.checkToken()
+    let [token, success, status] = await Schoolware.getTokenMicrosoft();
+    if(success){
+      [success,status] = await Schoolware.checkToken()
     }
     res.json({ "token": token, "success": success, "status": status });
   }
   catch (e) {
-    //console.log(e)
+    console.log(e)
     res.json({ "token": "", "success": false , "status": 500});
   }
 });
@@ -36,14 +36,14 @@ router.post('/schoolware', async function (req, res, next) {
       return;
     }
     let Schoolware = new schoolware.Schoolware(username, password, domain);
-    let token, succes, status = await Schoolware.getTokenSchoolware();
-    if(succes){
-      succes = await Schoolware.checkToken()
+    let [token, success, status] = await Schoolware.getTokenSchoolware();
+    if(success){
+      [success,status] = await Schoolware.checkToken()
     }
     res.json({ "token": token, "success": success, "status": status });
   }
   catch (e) {
-    //console.log(e)
+    console.log(e)
     res.json({ "token": "", "success": false , "status": 500});
   }
 });
