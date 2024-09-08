@@ -13,12 +13,12 @@ router.post('/check', async function (req, res, next) {
     }
     Schoolware = new schoolware.Schoolware();
     Schoolware.token = token;
-    let succes = await Schoolware.checkToken();
-    res.json({ "succes": succes });
+    let succes, status = await Schoolware.checkToken();
+    res.json({ "succes": succes , "status": status});
   }
   catch (e) {
     //console.log(e)
-    res.json({ "token": "", "success": false });
+    res.json({"success": false, "status": 500 });
   }
 });
 
@@ -31,12 +31,12 @@ router.post('/points', async function (req, res, next) {
     }
     Schoolware = new schoolware.Schoolware();
     Schoolware.token = token;
-    let points = await Schoolware.points();
-    res.json(points);
+    let points,success,status = await Schoolware.points();
+    res.json({"data" : points, "success": success, "status": status});
   }
   catch (e) {
     //console.log(e)
-    res.json({ "token": "", "success": false });
+    res.json({ "data": "", "success": false, "status": 500 });
   }
 });
 
@@ -50,12 +50,12 @@ router.post('/agenda', async function (req, res, next) {
     }
     Schoolware = new schoolware.Schoolware();
     Schoolware.token = token;
-    let agenda = await Schoolware.agenda(date);
-    res.json(agenda);
+    let agenda,success,status = await Schoolware.agenda(date);
+    res.json({"data" : agenda, "success": success, "status": status});
   }
   catch (e) {
     //console.log(e)
-    res.json({ "token": "", "success": false });
+    res.json({ "data": "", "success": false, "status": 500 });
   }
 });
 
@@ -68,12 +68,12 @@ router.post('/tasks', async function (req, res, next) {
     }
     Schoolware = new schoolware.Schoolware();
     Schoolware.token = token;
-    let tasks = await Schoolware.tasks();
-    res.json(tasks);
+    let tasks,success,status  = await Schoolware.tasks();
+    res.json({"data" : tasks, "success": success, "status": status});
   }
   catch (e) {
     //console.log(e)
-    res.json({ "token": "", "success": false });
+    res.json({ "data": "", "success": false, "status": 500 });
   }
 });
 

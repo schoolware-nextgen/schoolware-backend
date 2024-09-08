@@ -12,14 +12,16 @@ router.post('/microsoft', async function (req, res, next) {
       res.status(400).send(`send user and password and domain`);
       return;
     }
-    Schoolware = new schoolware.Schoolware(username, password, domain);
-    token = await Schoolware.getTokenMicrosoft();
-    var success = await Schoolware.checkToken()
-    res.json({ "token": token, "success": success });
+    let Schoolware = new schoolware.Schoolware(username, password, domain);
+    let token, succes, status = await Schoolware.getTokenMicrosoft();
+    if(succes){
+      var success = await Schoolware.checkToken()
+    }
+    res.json({ "token": token, "success": success, "status": status });
   }
   catch (e) {
     //console.log(e)
-    res.json({ "token": "", "success": false });
+    res.json({ "token": "", "success": false , "status": 500});
   }
 });
 
@@ -33,14 +35,16 @@ router.post('/schoolware', async function (req, res, next) {
       res.status(400).send(`send user and password and domain`);
       return;
     }
-    Schoolware = new schoolware.Schoolware(username, password, domain);
-    token = await Schoolware.getTokenSchoolware();
-    var success = await Schoolware.checkToken()
-    res.json({ "token": token, "success": success });
+    let Schoolware = new schoolware.Schoolware(username, password, domain);
+    let token, succes, status = await Schoolware.getTokenSchoolware();
+    if(succes){
+      succes = await Schoolware.checkToken()
+    }
+    res.json({ "token": token, "success": success, "status": status });
   }
   catch (e) {
     //console.log(e)
-    res.json({ "token": "", "success": false });
+    res.json({ "token": "", "success": false , "status": 500});
   }
 });
 
