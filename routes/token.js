@@ -21,7 +21,7 @@ router.post('/microsoft', async function (req, res, next) {
   }
   catch (e) {
     console.log(e)
-    res.json({ "token": "", "success": false , "status": 500});
+    res.status(500).json({ "token": "", "success": false , "status": 500});
   }
 });
 
@@ -44,7 +44,7 @@ router.post('/schoolware', async function (req, res, next) {
   }
   catch (e) {
     console.log(e)
-    res.json({ "token": "", "success": false , "status": 500});
+    res.status(500).json({ "token": "", "success": false , "status": 500});
   }
 });
 

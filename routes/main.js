@@ -18,8 +18,8 @@ router.post('/check', async function (req, res, next) {
     res.json({ "success": success , "status": status});
   }
   catch (e) {
-    //console.log(e)
-    res.json({"success": false, "status": 500 });
+    console.log("CHECK ERROR: ", e)
+    res.status(500).json({"success": false, "status": 500 });
   }
 });
 
@@ -37,8 +37,8 @@ router.post('/points', async function (req, res, next) {
     res.json({"data" : points, "success": success, "status": status});
   }
   catch (e) {
-    //console.log(e)
-    res.json({ "data": "", "success": false, "status": 500 });
+    console.log("POINTS ERROR: ", e)
+    res.status(500).json({ "data": "", "success": false, "status": 500 });
   }
 });
 
@@ -57,8 +57,8 @@ router.post('/agenda', async function (req, res, next) {
     res.json({"data" : agenda, "success": success, "status": status});
   }
   catch (e) {
-    //console.log(e)
-    res.json({ "data": "", "success": false, "status": 500 });
+    console.log("AGENDA ERROR: ", e)
+    res.status(500).json({ "data": "", "success": false, "status": 500 });
   }
 });
 
@@ -77,8 +77,8 @@ router.post('/tasks', async function (req, res, next) {
     res.json({"data" : tasks, "success": success, "status": status});
   }
   catch (e) {
-    //console.log(e)
-    res.json({ "data": "", "success": false, "status": 500 });
+    console.log("TASKS ERROR: ", e)
+    res.status(500).json({ "data": "", "success": false, "status": 500 });
   }
 });
 
