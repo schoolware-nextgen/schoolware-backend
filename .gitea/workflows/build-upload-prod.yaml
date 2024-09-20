@@ -35,4 +35,4 @@ jobs:
           platforms: |
             linux/amd64                                                
           push: true
-          tags: schoolware-nextgen/schoolware-backend:latest
+          tags: schoolwarenext/schoolware-backend:latest
