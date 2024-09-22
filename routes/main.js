@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var schoolware = require('@schoolware/schoolware-lib');
+var schoolware = require('schoolware-lib');
 
 
 
