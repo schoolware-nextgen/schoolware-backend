@@ -73,11 +73,29 @@ router.post('/tasks', async function (req, res, next) {
     let Schoolware = new schoolware.Schoolware(undefined,undefined,domain);
     Schoolware.token = token;
     let [tasks,success,status]  = await Schoolware.tasks();
-    console.log(status)
     res.json({"data" : tasks, "success": success, "status": status});
   }
   catch (e) {
     console.log("TASKS ERROR: ", e)
+    res.status(500).json({ "data": "", "success": false, "status": 500 });
+  }
+});
+
+router.post('/berichten', async function (req, res, next) {
+  try {
+    const token = req.body.token;
+    const domain = req.body.domain;
+    if (typeof (token) != 'string') {
+      res.status(400).send(`send token`);
+      return;
+    }
+    let Schoolware = new schoolware.Schoolware(undefined,undefined,domain);
+    Schoolware.token = token;
+    let [berichten,success,status]  = await Schoolware.berichten();
+    res.json({"data" : berichten, "success": success, "status": status});
+  }
+  catch (e) {
+    console.log("BERICHTEN ERROR: ", e)
     res.status(500).json({ "data": "", "success": false, "status": 500 });
   }
 });
