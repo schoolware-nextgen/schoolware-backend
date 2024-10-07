@@ -1,6 +1,9 @@
 name: Build image
 on:
-  [push]
+  push:
+    tags:
+      - "v*.*.*"
+      - "dev*"
 jobs:
   build-image:
     runs-on: ubuntu-latest
